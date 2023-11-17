@@ -1,4 +1,64 @@
-document.addEventListener("DOMContentLoaded", function () {});
+document.addEventListener("DOMContentLoaded", function () {
+  document
+    .getElementById("accountList")
+    .addEventListener("click", changeAccount);
+
+  document.getElementById("userAddress").addEventListener("click", copyAddress);
+
+  document.getElementById("transferFunds").addEventListener("click", handler);
+
+  document
+    .getElementById("header_network")
+    .addEventListener("click", getOpenNetwork);
+
+  document
+    .getElementById("network_item")
+    .addEventListener("click", getSelectedNetwork);
+
+  document.getElementById("add_network").addEventListener("click", setNetwork);
+
+  document.getElementById("loginAccount").addEventListener("click", loginUser);
+
+  document
+    .getElementById("accountCreate")
+    .addEventListener("click", createUser);
+
+  document.getElementById("openCreate").addEventListener("click", openCreate);
+
+  document.getElementById("sign_up").addEventListener("click", signUp);
+
+  document.getElementById("login_up").addEventListener("click", login);
+
+  document.getElementById("logout").addEventListener("click", logout);
+
+  document
+    .getElementById("open_Transfer")
+    .addEventListener("click", openTransfer);
+
+  document.getElementById("goBack").addEventListener("click", goBack);
+
+  document.getElementById("open_Import").addEventListener("click", openImport);
+
+  document.getElementById("open_assets").addEventListener("click", openAssets);
+
+  document
+    .getElementById("open_activity")
+    .addEventListener("click", openActiviy);
+
+  document.getElementById("goHomePage").addEventListener("click", goHomePage);
+
+  document
+    .getElementById("openAccountImport")
+    .addEventListener("click", openImportModel);
+
+  document
+    .getElementById("close_import_account")
+    .addEventListener("click", closeImportModel);
+
+  document
+    .getElementById("add_new_account")
+    .addEventListener("click", addAccount);
+});
 
 let providerURL = "";
 let provider;

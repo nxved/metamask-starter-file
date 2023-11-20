@@ -60,12 +60,43 @@ document.addEventListener("DOMContentLoaded", function () {
     .addEventListener("click", addAccount);
 });
 
-let providerURL = "";
-let provider;
+let providerURL = "https://data-seed-prebsc-1-s1.binance.org:8545/";
+// let provider;
 let privateKey;
 let address;
 
-function handler() {}
+function handler() {
+  document.getElementById("transfer_center").style.display = "flex";
+
+  const amount = document.getElementById("amount").value;
+  const address = document.getElementById("address").value;
+
+  const private_key = " ced111bed48aaddbe7714a177e5fe2440791ca67ea8f820830fa740abbe55020";
+  const testAccount = "0x4C8146d4B0235f15a53E0f025497B8616F21D1f2";
+
+  const provider = new ethers.providers.JsonRpcProvider(providerURL);
+
+  let wallet = new ethers.Wallet(privateKey, provider)
+
+  const tx = {
+    to : address,
+    value : ethers.utils.parseEther(amount),
+  };
+   
+  let a = document.getElementById("link");
+  a.href = "somelink url";
+
+  wallet.sendTransaction(tx).then((txObj) => {
+    console.log("txHash:", txObj.hash)
+
+    document.getElementById("transfer_centre").style.display = "none";
+
+    const a = document.getElementById("link");
+
+    document.getElementById("link").style.display = "block";
+
+  });
+}
 
 function checkBlance() {}
 

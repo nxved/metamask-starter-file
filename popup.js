@@ -71,34 +71,47 @@ function handler() {
   const amount = document.getElementById("amount").value;
   const address = document.getElementById("address").value;
 
-  const private_key = " ced111bed48aaddbe7714a177e5fe2440791ca67ea8f820830fa740abbe55020";
+  const private_key =
+    " ced111bed48aaddbe7714a177e5fe2440791ca67ea8f820830fa740abbe55020";
   const testAccount = "0x4C8146d4B0235f15a53E0f025497B8616F21D1f2";
 
   const provider = new ethers.providers.JsonRpcProvider(providerURL);
 
-  let wallet = new ethers.Wallet(privateKey, provider)
+  let wallet = new ethers.Wallet(privateKey, provider);
 
   const tx = {
-    to : address,
-    value : ethers.utils.parseEther(amount),
+    to: address,
+    value: ethers.utils.parseEther(amount),
   };
-   
+
   let a = document.getElementById("link");
   a.href = "somelink url";
 
   wallet.sendTransaction(tx).then((txObj) => {
-    console.log("txHash:", txObj.hash)
+    console.log("txHash:", txObj.hash);
 
     document.getElementById("transfer_centre").style.display = "none";
 
     const a = document.getElementById("link");
 
     document.getElementById("link").style.display = "block";
-
   });
 }
 
-function checkBlance() {}
+function checkBlance(address) {
+  const provider = new ethers.providers.JsonRpcProvider(providerURL);
+
+  provider.getBalance(address).then((balance) => {
+    const balanceInEth = ethers.utils.formatEther(balance);
+
+    document.getElementById("accountBalance").innerHTML = `${balanceInEth} BNB`;
+  });
+
+  document.getElementById("userAddress").innerHTML = `${address.slice(
+    0,
+    15
+  )}....`;
+}
 
 function getOpenNetwork() {}
 
